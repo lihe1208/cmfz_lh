@@ -1,13 +1,18 @@
 package com.baizhi.service.impl;
 
-import com.baizhi.mapper.UserCountMapper;
+import com.baizhi.eitity.UserCount;
 import com.baizhi.service.UserCountService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service("userCountService")
+import java.util.List;
+
 public class UserCountServiceImpl implements UserCountService {
-    @Autowired
-    UserCountMapper userCountMapper;
+    @Override
+    public List<UserCount> selectChinaMan() {
+        return null;
+    }
 
+    @Override
+    public List<UserCount> selectChinaWoman() {
+        return null;
+    }
 }

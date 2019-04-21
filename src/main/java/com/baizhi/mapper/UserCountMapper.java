@@ -1,7 +1,11 @@
 package com.baizhi.mapper;
 
-import tk.mybatis.mapper.common.Mapper;
+import com.baizhi.eitity.UserCount;
 
-public interface UserCountMapper extends Mapper {
+import java.util.List;
 
+public interface UserCountMapper {
+    List<UserCount> selectChinaMan();
+
+    List<UserCount> selectChinaWoman();
 }

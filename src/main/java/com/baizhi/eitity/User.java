@@ -10,6 +10,8 @@ import tk.mybatis.mapper.annotation.KeySql;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,5 +35,8 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
     private  Integer masterId;
+
+
+    private List<UserCount> userCounts;
 
 }

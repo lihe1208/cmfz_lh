@@ -5,10 +5,18 @@
 
 <mapper namespace="com.baizhi.mapper.UserCountMapper">
 
-    <select id="select1" resultMap="albumResultMap">
-        select t1.*,t2.id sonId,t2.title sonTitle,t2.size sonSIZE,t2.duration duration,t2.publish_date sonpublishdate,t2.album_id albumid,t2.download_path download_path from album t1
-        left join chapter t2
-        on t1.id = t2.album_id
+    <resultMap id="userCountResultMap" type="com.baizhi.eitity.UserCount">
+        <result column="province" property="name"/>
+        <result column="count" property="value"></result>
+
+    </resultMap>
+
+    <select id="selectChinaMan" resultMap="userCountResultMap">
+        select count(*) count,sex,province FROM `user` where sex=0 group by province
     </select>
 
+
+    <select id="selectChinaWoman" resultMap="userCountResultMap">
+        select count(*) count,sex,province FROM `user` where sex=1 group by province
+    </select>
 </mapper>

@@ -5,6 +5,7 @@ import cn.afterturn.easypoi.excel.entity.ExportParams;
 import com.baizhi.eitity.Album;
 import com.baizhi.eitity.Banner;
 import com.baizhi.eitity.Chapter;
+import com.baizhi.mapper.UserCountMapper;
 import com.baizhi.service.AlbumService;
 import com.baizhi.service.BannerService;
 import com.baizhi.service.ChapterService;
@@ -143,5 +144,14 @@ public class CmfzLhApplicationTests {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Autowired
+	UserCountMapper userCountMapper;
+
+	@Test
+	public void test1() {
+		List list = userCountMapper.selectChinaMan();
+		System.out.println(list);
 	}
 }
