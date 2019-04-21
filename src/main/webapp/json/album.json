@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "title": "甘露明珠",
+    "amount": 3,
+    "imgPath": "/img/captcha.jpg",
+    "children": [
+      {
+        "id": 11,
+        "title": "甘露明珠1",
+        "chapterSize": "1M",
+        "duration": "0:5:28",
+        "downLoadPath": "cce4239c-5fe2-4a60-aaac-d9a51f8f2669.mp3"
+      },
+      {
+        "id": 12,
+        "title": "甘露明珠2",
+        "chapterSize": "6M",
+        "duration": "0:2:24",
+        "downLoadPath": ""
+      },
+      {
+        "id": 13,
+        "title": "甘露明珠3",
+        "chapterSize": "4M",
+        "duration": "0:4:58",
+        "downLoadPath": ""
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "甘露明珠2",
+    "amount": 3,
+    "imgPath": "/img/captcha.jpg",
+    "children": [
+      {
+        "id": 21,
+        "title": "甘露明珠12",
+        "chapterSize": "1M",
+        "duration": "0:5:28",
+        "downLoadPath": ""
+      },
+      {
+        "id": 22,
+        "title": "甘露明珠22",
+        "chapterSize": "6M",
+        "duration": "0:2:24",
+        "downLoadPath": ""
+      },
+      {
+        "id": 23,
+        "title": "甘露明珠32",
+        "chapterSize": "4M",
+        "duration": "0:4:58",
+        "downLoadPath": ""
+      }
+    ]
+  }
+]

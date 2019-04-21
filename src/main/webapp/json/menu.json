@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "title": "轮播图管理",
+    "iconCls": "icon-add",
+    "url": "",
+    "children": [
+      {
+        "id": 11,
+        "title": "轮播图1",
+        "iconCls": "icon-remove",
+        "url": "/jsp/banner.jsp"
+      },
+      {
+        "id": 12,
+        "title": "轮播图2",
+        "iconCls": "icon-ok",
+        "url": "/jsp/banner.jsp"
+      },
+      {
+        "id": 13,
+        "title": "轮播图3",
+        "iconCls": "icon-save",
+        "url": "/jsp/banner.jsp"
+      },
+      {
+        "id": 14,
+        "title": "轮播图4",
+        "iconCls": "icon-edit",
+        "url": "/jsp/banner.jsp"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "专辑管理",
+    "iconCls": "icon-add",
+    "url": "",
+    "children": [
+      {
+        "id": 21,
+        "title": "专辑1",
+        "iconCls": "icon-remove",
+        "url": "/jsp/album.jsp"
+      },
+      {
+        "id": 22,
+        "title": "专辑2",
+        "iconCls": "icon-ok",
+        "url": "/jsp/album.jsp"
+      },
+      {
+        "id": 23,
+        "title": "专辑3",
+        "iconCls": "icon-save",
+        "url": "/jsp/album.jsp"
+      },
+      {
+        "id": 24,
+        "title": "专辑4",
+        "iconCls": "icon-edit",
+        "url": "/jsp/album.jsp"
+      }
+    ]
+  }
+]
