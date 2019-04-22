@@ -37,6 +37,4 @@ public class User {
     private  Integer masterId;
 
 
-    private List<UserCount> userCounts;
-
 }

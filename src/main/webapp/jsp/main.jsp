@@ -7,6 +7,32 @@
 <div id="statistics_main" style="width: 600px;height: 400px;;margin-top: 30px;margin-left: 30px"></div>
 
 <script type="text/javascript">
+    var goEasy = new GoEasy({
+        appkey: 'BC-c07f58e282ac45f493d42641b6a5259e'
+    });
+
+    goEasy.subscribe({
+        channel: 'lh',
+        onMessage: function (message) {
+            alert('收到：' + message.content);
+
+            // 异步加载统计信息
+            $.post("${pageContext.request.contextPath }/userCount/activeCount", function (data) {
+                console.log(data);
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption({
+                    xAxis: {
+                        data: data.xAxisData
+                    },
+                    series: [{
+                        // 根据名字对应到相应的系列
+                        name: '活跃用户',
+                        data: data.seriesData
+                    }]
+                });
+            }, "json");
+        }
+    });
 	 // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('statistics_main'));
 
@@ -29,34 +55,34 @@
                 data: []
             }]
         };
-        
+
         myChart.setOption(option);
-        
-		/*
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("intervals",new String[]{"7天","15天"});
-		map.put("counts",new int[]{5,10});'
-		return map;
-		
-		[{"intervals":["7天","15天"]},{}]
-		
-		
-		*/
-        // 异步加载统计信息
-		$.post("${pageContext.request.contextPath }/statistics/activeUser",function(data){
+
+
+     /*Map<String,Object> map = new HashMap<String,Object>();
+     map.put("intervals",new String[]{"7天","15天"});
+     map.put("counts",new int[]{5,10});'
+     return map;
+
+     [{"intervals":["7天","15天"]},{}]*/
+
+
+
+    // 异步加载统计信息
+     $.post("${pageContext.request.contextPath }/userCount/activeCount", function (data) {
 			console.log(data);
         	// 使用刚指定的配置项和数据显示图表。
 			myChart.setOption({
                 xAxis: {
-                    data: data.intervals
+                    data: data.xAxisData
                 },
 				series: [{
 		            // 根据名字对应到相应的系列
 		            name: '活跃用户',
-		            data: data.counts
+                    data: data.seriesData
         		}]
 			});
 		},"json");
 
-        
+
 </script>

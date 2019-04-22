@@ -17,10 +17,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Table(name = "album")
+/*@Table(name = "album")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ExcelTarget(value = "album")*/
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "album")
 @ExcelTarget(value = "album")
 public class Album implements Serializable{
     @Id

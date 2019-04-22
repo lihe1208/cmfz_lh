@@ -3,6 +3,7 @@ package com.baizhi.controller;
 import com.baizhi.eitity.PageHelper;
 import com.baizhi.eitity.User;
 import com.baizhi.service.UserService;
+import io.goeasy.GoEasy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,6 @@ public class UserController {
         PageHelper pageHelper = userService.queryAll(page,rows);
         map.put("rows",pageHelper.getBanners());
         map.put("total",pageHelper.getTotal());
-
         System.out.println(map);
         return  map;
 
@@ -36,9 +36,7 @@ public class UserController {
     @RequestMapping("insertUser")
     @ResponseBody
     public Map insert(User user, MultipartFile file) throws IOException {
-
         System.out.println(user);
-
         String oldName = file.getOriginalFilename();
         String uuid = UUID.randomUUID().toString();
         String newName = uuid+oldName.substring(oldName.lastIndexOf("."));
@@ -56,6 +54,7 @@ public class UserController {
         try {
             userService.insert(user);
             map.put("isInsert",true);
+            test3();
         }catch(Exception e){
             e.printStackTrace();
             map.put("isInsert",false);
@@ -63,6 +62,11 @@ public class UserController {
 
         return  map;
 
+    }
+
+    public void test3() {
+        GoEasy goEasy = new GoEasy("http://rest-hangzhou.goeasy.io", "BC-c07f58e282ac45f493d42641b6a5259e");
+        goEasy.publish("lh", "新的动态!");
     }
 
 }

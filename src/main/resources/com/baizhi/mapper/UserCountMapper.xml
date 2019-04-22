@@ -19,4 +19,9 @@
     <select id="selectChinaWoman" resultMap="userCountResultMap">
         select count(*) count,sex,province FROM `user` where sex=1 group by province
     </select>
+
+    <select id="selectCount" resultType="java.lang.Integer">
+        select COUNT(*) count FROM `user` WHERE DATEDIFF(NOW(),create_date) &lt; #{day}*7
+    </select>
+
 </mapper>

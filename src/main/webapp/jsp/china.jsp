@@ -10,6 +10,48 @@
 </div>
 
 <script type="text/javascript">
+    var goEasy = new GoEasy({
+        appkey: 'BC-c07f58e282ac45f493d42641b6a5259e'
+    });
+
+    goEasy.subscribe({
+        channel: 'lh',
+        onMessage: function (message) {
+            alert('收到：' + message.content);
+            $(function () {
+                $.post("${pageContext.request.contextPath}/userCount/chinaman", function (data) {
+                    /*alert(data.value);
+                    alert(data.name);*/
+                    myChart.setOption({
+                        series: [{
+                            // 根据名字对应到相应的系列
+                            name: '男',
+                            data: data.data
+                        }]
+                    });
+                }, "json");
+
+                $.post("${pageContext.request.contextPath}/userCount/chinawoman", function (data) {
+                    /* console.log(data);*/
+                    myChart.setOption({
+                        series: [{
+                            // 根据名字对应到相应的系列
+                            name: '女',
+                            data: data.data
+                        }]
+                    });
+                }, "json");
+            });
+
+
+        }
+
+
+    });
+
+
+
+
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('statistics_china'));
 
@@ -85,31 +127,35 @@
         ]
     };
     myChart.setOption(option);
-
     $(function () {
-        $.post("/cmfzms_gaozhy/statistics/distribution1", function (data) {
-            console.log(data);
+        $.post("${pageContext.request.contextPath}/userCount/chinaman", function (data) {
+            /*alert(data.value);
+            alert(data.name);*/
             myChart.setOption({
                 series: [{
                     // 根据名字对应到相应的系列
                     name: '男',
-                    data: data
+                    data: data.data
                 }]
             });
         }, "json");
 
-        $.post("/cmfzms_gaozhy/statistics/distribution2", function (data) {
-            console.log(data);
+        $.post("${pageContext.request.contextPath}/userCount/chinawoman", function (data) {
+            /* console.log(data);*/
             myChart.setOption({
                 series: [{
                     // 根据名字对应到相应的系列
                     name: '女',
-                    data: data
+                    data: data.data
                 }]
             });
         }, "json");
     });
+
 </script>
+<div id="message" style="width: 50px;height: 38px">
+    <h3>消息框</h3>
+</div>
 
 
 
