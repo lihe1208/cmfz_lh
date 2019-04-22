@@ -31,29 +31,29 @@
         };
         
         myChart.setOption(option);
-        
-		/*
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("intervals",new String[]{"7天","15天"});
-		map.put("counts",new int[]{5,10});'
-		return map;
+
+
+     /*Map<String,Object> map = new HashMap<String,Object>();
+     map.put("intervals",new String[]{"7天","15天"});
+     map.put("counts",new int[]{5,10});'
+     return map;
+
+     [{"intervals":["7天","15天"]},{}]*/
 		
-		[{"intervals":["7天","15天"]},{}]
 		
-		
-		*/
+
         // 异步加载统计信息
-		$.post("${pageContext.request.contextPath }/statistics/activeUser",function(data){
+     $.post("${pageContext.request.contextPath }/userCount/activeCount", function (data) {
 			console.log(data);
         	// 使用刚指定的配置项和数据显示图表。
 			myChart.setOption({
                 xAxis: {
-                    data: data.intervals
+                    data: data.xAxisData
                 },
 				series: [{
 		            // 根据名字对应到相应的系列
 		            name: '活跃用户',
-		            data: data.counts
+                    data: data.seriesData
         		}]
 			});
 		},"json");

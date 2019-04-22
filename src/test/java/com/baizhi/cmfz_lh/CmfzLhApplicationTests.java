@@ -151,7 +151,7 @@ public class CmfzLhApplicationTests {
 
 	@Test
 	public void test1() {
-		List list = userCountMapper.selectChinaMan();
-		System.out.println(list);
+		int i = userCountMapper.selectCount(1);
+		System.out.println(i);
 	}
 }

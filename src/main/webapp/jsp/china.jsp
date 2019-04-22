@@ -87,24 +87,25 @@
     myChart.setOption(option);
 
     $(function () {
-        $.post("/cmfzms_gaozhy/statistics/distribution1", function (data) {
-            console.log(data);
+        $.post("${pageContext.request.contextPath}/userCount/chinaman", function (data) {
+            /*alert(data.value);
+            alert(data.name);*/
             myChart.setOption({
                 series: [{
                     // 根据名字对应到相应的系列
                     name: '男',
-                    data: data
+                    data: data.data
                 }]
             });
         }, "json");
 
-        $.post("/cmfzms_gaozhy/statistics/distribution2", function (data) {
-            console.log(data);
+        $.post("${pageContext.request.contextPath}/userCount/chinawoman", function (data) {
+            /* console.log(data);*/
             myChart.setOption({
                 series: [{
                     // 根据名字对应到相应的系列
                     name: '女',
-                    data: data
+                    data: data.data
                 }]
             });
         }, "json");
