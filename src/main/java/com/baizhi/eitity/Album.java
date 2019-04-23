@@ -31,7 +31,6 @@ import java.util.List;
 public class Album implements Serializable{
     @Id
     @Excel(name = "编号")
-
     private String id;
     @Excel(name = "专辑名",needMerge = true)
     private String title;
@@ -53,7 +52,6 @@ public class Album implements Serializable{
     @Excel(name = "简介",needMerge = true)
     private String brief;
 
-    @Transient
     @ExcelCollection(name = "章节")
     private List<Chapter> children=new ArrayList<>();
 

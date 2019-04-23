@@ -8,7 +8,8 @@ import java.util.List;
 
 public interface AlbumService {
     List<Album> select1();
-    Album selectOne(Integer id);
+
+    Album selectOne(String id);
     void insert(Album album);
     void delete(Album album);
     public void redo();//导入

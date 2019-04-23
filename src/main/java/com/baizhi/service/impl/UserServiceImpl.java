@@ -38,4 +38,9 @@ public class UserServiceImpl implements UserService {
         return pageHelper;
 
     }
+
+    @Override
+    public User selectOne(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
 }

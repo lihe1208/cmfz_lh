@@ -129,25 +129,7 @@ public class ChapterController {
                 e.printStackTrace();
             }
 
-        /*InputStream is=new FileInputStream("D:\\服务器\\"+title);
-        String s1= URLEncoder.encode(title,"UTF-8");
-        resp.setHeader("content-disposition","attachment:fileName="+s1);
-        resp.setContentType("audio/mpeg");
-        OutputStream os=resp.getOutputStream();
 
-        while(true){
-            int i=is.read();
-            if(i==-1)
-                break;
-            os.write(i);
-        }
-        is.close();
-        os.close();
-
-
-
-        Map map=new HashMap();
-        return  map;*/
         map.put("download",true);
         } catch (Exception e) {
             e.printStackTrace();

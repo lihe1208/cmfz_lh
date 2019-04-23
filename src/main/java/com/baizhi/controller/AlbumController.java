@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLEncoder;
 import java.util.*;
 
 @Controller
@@ -41,7 +42,7 @@ public class AlbumController {
 
     @RequestMapping("selectOne")
     @ResponseBody
-    public Album selectOne(Integer id){
+    public Album selectOne(String id) {
 
         Album album = albumService.selectOne(id);
         return album;
@@ -82,16 +83,13 @@ public class AlbumController {
     }
     @RequestMapping("undo")
     @ResponseBody
-    public Map undo(HttpServletResponse response){
-        Map map=new HashMap();
+    public void undo(HttpServletResponse response, String fileName) {
+        fileName = "专辑详情表";
 
-        try {
             System.out.println("导出");
 
-            //创建工作簿
-            /*Workbook workbook = new HSSFWorkbook();*/
 
-            List<Album> albums = albumService.undo();
+        List<Album> albums = albumService.select1();
             List<Chapter> chapters = chapterService.select();
             Album album = new Album();
             Workbook workbook = ExcelExportUtil.exportExcel
@@ -104,37 +102,23 @@ public class AlbumController {
             }
 
 
-                String path="D:/服务器/";
-
-                /*这一块不对*/
-                /*workbook.write(new FileOutputStream(new File(path+"test333.xls")));
-                response.setHeader();*/
-                /*response.setHeader().set*/
-                /* 将文件发送至客户端。*/
-                /*注意：在ie浏览器下，如果采用location.href='/ServletDownload.do';方式下载，不能在servlet中使用response.getWriter();输出，而应该用response.getOutputStream();
-                否则存在下载后的excel直接在浏览器上打开，而不是指定文件路径后下载。其他浏览器未测试过。
-                服务端代码
-                1)、设置响应的头文件，会自动识别文件内容*/
-                response.setContentType("multipart/form-data");
-                /*2)、设置Content-Disposition*/
-                response.setHeader("Content-Disposition", "attachment;filename=test333.xls");
-                /* 3)、输出流*/
-                /*OutputStream out = response.getOutputStream();
-                *//* 4)、获取服务端生成的excel文件，这里的path等于4.8中的path*//*
-                InputStream in = new FileInputStream(new File(path+"test333.xls"));*/
-                /* 5)、输出文件*/
-                /*int b;
-                while((b=in.read())!=-1){
-                    out.write(b);
-                }*/
-
-            map.put("list",true);
-        } catch (Exception e) {
+        //设置响应的编码
+        try {
+            fileName = URLEncoder.encode(fileName, "utf-8");
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-            map.put("list",false);
+        }
+        //设置响应类型
+        response.setContentType("application/ms-excel");
+        response.addHeader("Content-Disposition", "attachment; filename=" + fileName + ".xls");
+        try {
+            OutputStream os = response.getOutputStream();
+            workbook.write(os);
+            workbook.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        return map;
     }
 
     @RequestMapping("redo")

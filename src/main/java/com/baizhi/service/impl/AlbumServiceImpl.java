@@ -1,7 +1,6 @@
 package com.baizhi.service.impl;
 
 import com.baizhi.eitity.Album;
-import com.baizhi.eitity.Chapter;
 import com.baizhi.mapper.AlbumMapper;
 import com.baizhi.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public Album selectOne(Integer id) {
+    public Album selectOne(String id) {
         Album album = albumMapper.selectByPrimaryKey(id);
         return album;
     }

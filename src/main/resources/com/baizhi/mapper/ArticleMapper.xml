@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baizhi.mapper.MenuMapper">
+
+    <resultMap id="MenuResultMap" type="com.baizhi.eitity.Menu">
+        <result column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="icon_cls" property="iconCls"/>
+        <collection property="children" javaType="java.util.List" ofType="com.baizhi.eitity.Menu">
+            <result column="sonId" property="id"/>
+            <result column="sonTitle" property="title"/>
+            <result column="sonIcon" property="iconCls"/>
+            <result column="sonJspUrl" property="jspUrl"/>
+        </collection>
+    </resultMap>
+
+    <select id="select1" resultMap="MenuResultMap">
+         select t1.*,t2.id sonId,t2.title sonTitle,t2.icon_cls sonIcon,t2.jsp_url sonJspUrl from menu t1
+        left join menu t2
+        on t1.id = t2.parent_id
+        where t1.parent_id is null
+    </select>
+
+</mapper>
