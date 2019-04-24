@@ -23,4 +23,14 @@ public class ArticleServiceImpl implements ArticleService {
     public Article selectOne(Integer id) {
         return articleMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public List selectMyMaster(Integer id) {
+        return articleMapper.selectMyMaster(id);
+    }
+
+    @Override
+    public List selectOtherMaster(Integer id) {
+        return articleMapper.selectOtherMaster(id);
+    }
 }

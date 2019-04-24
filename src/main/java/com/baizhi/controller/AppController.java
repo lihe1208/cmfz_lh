@@ -50,14 +50,13 @@ public class AppController {
                         Map<String, Object> map = new HashMap<>();
                         User user = userService.selectOne(uid);
                         Integer mid = user.getMasterId();
-
-                        map.put("article", "当前用户的上师文章");
+                        map.put("article", articleService.selectMyMaster(mid));
                         return map;
                     } else {
                         Map<String, Object> map = new HashMap<>();
                         User user = userService.selectOne(uid);
                         Integer mid = user.getMasterId();
-                        map.put("article", "其他上师的文章");
+                        map.put("article", articleService.selectOtherMaster(mid));
                         return map;
                     }
                 }

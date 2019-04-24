@@ -12,4 +12,8 @@ public interface ArticleService {
 
     public Article selectOne(Integer id);
 
+    public List selectMyMaster(Integer id);
+
+    public List selectOtherMaster(Integer id);
+
 }
